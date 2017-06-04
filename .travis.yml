@@ -6,8 +6,4 @@ script: py.test -n 8 tests
 env:
   global:
   - SAUCE_USERNAME=anveshmalhotra
-addons:
-  jwt:
-    secure: 6d27c807-1c2b-41e4-9411-73944a17211e
-
-    
+  - SAUCE_ACCESS_KEY=6d27c807-1c2b-41e4-9411-73944a17211e
