@@ -2,8 +2,6 @@ from selenium import webdriver
 
 from common import Webpage, Desktop,Keywords
 
-
-
 def openSauceLabs(platform):
     username = "anveshmalhotra"
     authkey = "6d27c807-1c2b-41e4-9411-73944a17211e"
@@ -20,6 +18,12 @@ def openSauceLabs(platform):
     if(Keywords.isElementVisible(driver, "//*[@aria-label='Close Overlay']") is True):
         Keywords.ClickElement(driver, "//*[@aria-label='Close Overlay']")
     return driver
+def navigate_to_dominos(driver):
+    driver.get(Webpage.dominosURL)
+    #Must be changed to a new function
+    if(Keywords.isElementVisible(driver, "//*[@aria-label='Close Overlay']") is True):
+        Keywords.ClickElement(driver, "//*[@aria-label='Close Overlay']")
+    
 
 #driver=openSauceLabs("Windows-Chrome")
     
