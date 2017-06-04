@@ -42,7 +42,7 @@ def driver(request, browser_config):
     username = environ.get('SAUCE_USERNAME', None)
     access_key = environ.get('SAUCE_ACCESS_KEY', None)
 
-    selenium_endpoint = "https://%s:%s@ondemand.saucelabs.com:443/wd/hub" % (username, access_key)
+    selenium_endpoint = "https://%s:%s@ondemand.saucelabs.com:80/wd/hub" % (username, access_key)
     desired_caps['build'] = build_tag
     # we can move this to the config load or not, also messing with this on a test to test basis is possible :)
     desired_caps['tunnelIdentifier'] = tunnel_id
