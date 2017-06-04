@@ -1,5 +1,5 @@
 selenium
 sauceclient>=0.2.1
-pytest
+pytest==2.7.0
 pytest-xdist==1.14
 requests
