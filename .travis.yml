@@ -2,6 +2,10 @@ language: python
 python:
   - "2.7"  
 install: "pip install -r requirements.txt"  
+addons:
+  sauce_connect:
+    username: "anveshmalhotra"
+    access_key: "6d27c807-1c2b-41e4-9411-73944a17211e"
 script:
  - py.test
 notifications:
