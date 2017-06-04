@@ -10,12 +10,12 @@ browsers = [
         "platform": "Windows 10",
         "browserName": "chrome",
         "version": "58.0",
-        "idleTimeout":"10"
+        #"idleTimeout":"10"
     }, {
         "platform": "macOS 10.12",
         "browserName": "safari",
         "version": "10.0",
-        "idleTimeout":"10"
+        #"idleTimeout":"10"
     }]
 
 def pytest_generate_tests(metafunc):
@@ -53,6 +53,7 @@ def driver(request, browser_config):
         command_executor=executor,
         desired_capabilities=desired_caps
     )
+
     # This is specifically for SauceLabs plugin.
     # In case test fails after selenium session creation having this here will help track it down.
     # creates one file per test non ideal but xdist is awful
@@ -71,6 +72,7 @@ def driver(request, browser_config):
     except WebDriverException:
         # we can ignore the exceptions of WebDriverException type -> We're done with tests.
         print('Warning: The driver failed to quit properly. Check test and server side logs.')
+
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     # this sets the result as a test attribute for SauceLabs reporting.
