@@ -1,5 +1,4 @@
 from common import Setup,Keywords
-import string,numpy
 
 def Deliver():
     driver=Setup.openSauceLabs("Windows-Chrome")
