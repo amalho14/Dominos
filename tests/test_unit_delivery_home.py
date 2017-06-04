@@ -12,7 +12,7 @@ class TestDeliveryHome(object):
         delivery_button="//*[contains(@class,'js-delivery')]"
         button_text=Keywords.getText(driver, delivery_button)
         assert (button_text=='DELIVERY'),"Text of Delivery Button is incorrect, expected: %s"%'DELIVERY'
-        assert (Keywords.isElementEnabled(driver, deliveryButton) is True),"Deliver Button is not enabled"
+        assert (Keywords.isElementEnabled(driver, delivery_button) is True),"Deliver Button is not enabled"
         Keywords.ClickElement(driver, delivery_button)
         try:
             Keywords.isElementVisible(driver,"//*[@class='form']/div/div/h2/span")

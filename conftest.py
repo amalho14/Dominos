@@ -16,11 +16,6 @@ browsers = [
         "platform": "macOS 10.12",
         "version": "10.0",
         "idleTimeout": "10"
-    }, {
-        "browserName": "firefox",
-        "platform": "OS X 10.10",
-        "version": "47.0",
-        "idleTimeout": "10"
     }]
 
 def pytest_generate_tests(metafunc):
