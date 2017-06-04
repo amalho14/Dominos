@@ -1,9 +1,8 @@
-sudo: true
 language: python
 python:
 - 2.7.10
 install: pip install -r requirements.txt
-script: py.test -s -n 10 tests
+script: py.test -n 10 tests
 env:
   global:
   - SAUCE_USERNAME=anveshmalhotra
