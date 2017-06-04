@@ -1,3 +1,2 @@
 selenium
 pytest
-pytest-xdist>=1.16.0
