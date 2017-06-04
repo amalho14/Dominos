@@ -157,6 +157,7 @@ def DeliveryUnitError():
             dorm_error="//*[@id='Dorm-error']"
             assert (Keywords.getText(driver, dorm_error)==error),"Dorm Error is not the same as expected %s for %s" %(error,add)
     driver.quit()
+Deliver()
 #DeliverUnit2()
 #DeliverUnitTypesOfAddress()
 DeliveryUnitEnter()
