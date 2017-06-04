@@ -34,23 +34,23 @@ def driver(request, browser_config):
     # The point is to make a copy and not mess with the original test spec.
     desired_caps = dict()
     desired_caps.update(browser_config)
-    test_name = request.node.name
-    build_tag = environ.get('BUILD_TAG', None)
-    tunnel_id = environ.get('TUNNEL_IDENTIFIER', None)
-    username = environ.get('SAUCE_USERNAME', None)
-    access_key = environ.get('SAUCE_ACCESS_KEY', None)
-
+    #test_name = request.node.name
+#     build_tag = environ.get('BUILD_TAG', None)
+#     tunnel_id = environ.get('TUNNEL_IDENTIFIER', None)
+#     username = environ.get('SAUCE_USERNAME', None)
+#     access_key = environ.get('SAUCE_ACCESS_KEY', None)
     selenium_endpoint = "https://%s:%s@ondemand.saucelabs.com:443/wd/hub" % (username, access_key)
     desired_caps['build'] = build_tag
     # we can move this to the config load or not, also messing with this on a test to test basis is possible :)
-    desired_caps['tunnelIdentifier'] = tunnel_id
-    desired_caps['name'] = test_name
+    #desired_caps['tunnelIdentifier'] = tunnel_id
+    #desired_caps['name'] = test_name
 
     executor = RemoteConnection(selenium_endpoint, resolve_ip=False)
-    browser = webdriver.Remote(
-        command_executor=executor,
-        desired_capabilities=desired_caps
-    )
+    browser = webdriver.Remote(command_executor=saucelabconnect, desired_capabilities=desired_caps)
+#     browser = webdriver.Remote(
+#         command_executor=executor,
+#         desired_capabilities=desired_caps
+#     )
     # This is specifically for SauceLabs plugin.
     # In case test fails after selenium session creation having this here will help track it down.
     # creates one file per test non ideal but xdist is awful
