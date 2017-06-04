@@ -7,25 +7,20 @@ from selenium.webdriver.remote.remote_connection import RemoteConnection
 
 browsers = [
     {
-        "platform": "Windows 10",
-        "browserName": "MicrosoftEdge",
-        "version": "14.14393"
-    }, {
-        "platform": "Windows 10",
-        "browserName": "firefox",
-        "version": "49.0"
-    }, {
-        "platform": "Windows 7",
-        "browserName": "internet explorer",
-        "version": "11.0"
-    }, {
-        "platform": "OS X 10.11",
-        "browserName": "safari",
-        "version": "10.0"
-    }, {
-        "platform": "OS X 10.11",
         "browserName": "chrome",
-        "version": "54.0"
+        "platform": "Windows 10",
+        "version": "58.0",
+        "idleTimeout": "10"
+    }, {
+        "browserName": "safari",
+        "platform": "macOS 10.12",
+        "version": "10.0",
+        "idleTimeout": "10"
+    }, {
+        "browserName": "firefox",
+        "platform": "OS X 10.10",
+        "version": "47.0",
+        "idleTimeout": "10"
     }]
 
 def pytest_generate_tests(metafunc):
@@ -77,7 +72,6 @@ def driver(request, browser_config):
     # Teardown starts here
     # report results
     try:
-        browser.execute_script("sauce:job-result=%s" % str(not request.node.rep_call.failed).lower())
         browser.quit()
     except WebDriverException:
         # we can ignore the exceptions of WebDriverException type -> We're done with tests.
