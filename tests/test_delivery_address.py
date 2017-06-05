@@ -1,7 +1,8 @@
 from tests import Keywords
 import pytest
 from tests.Setup import navigate_to_dominos
-import org.openqa.selenium.Keys
+from selenium.webdriver.common.keys import Keys
+
 
 @pytest.mark.usefixtures('driver')
 class TestDeliveryAddress(object):
