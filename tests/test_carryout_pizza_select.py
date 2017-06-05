@@ -60,13 +60,12 @@ class TestCarryoutSelectPizza(object):
         
         awaitingOrder="//*[contains(@class,'js-emptyMessage')]"
         Keywords.isElementVisible(driver,awaitingOrder)
-        myAddress="%s, %s, %s",(cityValue,state_AZ,zip_code)
+        myAddress="%s, %s %s",(cityValue,state_AZ,zip_code)
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
         elements=Keywords.WebElements(driver,myLocation)
         for element in elements:
-            print element.text
-            #if(element.text):
-                #assert (element.get_text()==myAddress),"Address not same for checkout"
+            if(element.text!=""):
+                assert (element.get_text()==myAddress),"Address not same for checkout"
                 
         
         
