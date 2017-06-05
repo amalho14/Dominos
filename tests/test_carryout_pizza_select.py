@@ -38,7 +38,7 @@ class TestCarryoutSelectPizza(object):
         navigate_to_select_pizza(driver)
         cityValue="TEMPE"
         state_AZ="AZ"
-        zip_codeValue="85281"
+        zip_code="85281"
         myAddress="%s, %s %s",(cityValue,state_AZ,zip_code)
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
         elements=Keywords.WebElements(driver,myLocation)
@@ -57,6 +57,8 @@ class TestCarryoutSelectPizza(object):
         navigate_to_select_pizza(driver)
         coupon="//*[contains(@class,'media--coupon--featured-image')]"
         Keywords.ClickElement(driver,coupon)
+        close="//*[contains(@class,'js-closeButton')]"
+        Keywords.ClickElement(driver,close)
         couponError="//*[@class='couponHeader__text']"
         assert (Keywords.getText(driver,coupon)==True),"Coupon error not displayed when empty order"
         
