@@ -108,31 +108,36 @@ class TestDeliveryAddress(object):
         randomStreet=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomStreet,street_address)
         Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
-        #print Keywords.WebElement(driver,street_address).get_attribute("value")
-        Keywords.getAttributeValue(driver,street_address)
-        assert (Keywords.getAttributeValue(driver,street_address)==randomStreet),"Street address not entered correctly %s %s" %(randomStreet,Keywords.getText(driver,street_address))
+        assert (Keywords.getAttributeValue(driver,street_address)==randomStreet),"Street address not entered correctly"
         
         address_line2="//*[@name='Address_Line_2']"
         randomAddressLine2=Keywords.generateRandom('letter','digits','punctuation',10)
         Keywords.enterText(driver,randomAddressLine2,address_line2)
-        
-        #assert (Keywords.getText(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
         
         city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomCity,city)
-        #assert (Keywords.getText(driver,city)==randomCity),"City is not entered correctly"
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,city)==randomCity),"City is not entered correctly"
 
         state="//*[@name='Region']"
         Keywords.ClickElement(driver,state)
         state_AZ="//*[@name='Region']/option[contains(text(),'AZ')]"
         Keywords.ClickElement(driver,state_AZ)
         
-        
         zip_code="//*[@name='Postal_Code']"
         randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomZip,zip_code)
-        #assert (Keywords.getText(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
+        
+        submit="//*[@type='submit']"
+        Keywords.ClickElement(driver,submit)
+        buildyourown="//*[contains(@class,'navigation-BuildYourOwn')]"
+        Keywords.isElementVisible(driver,buildyourown)
+        assert "Entrees Home" in driver.title
         
         
         
