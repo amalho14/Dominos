@@ -108,7 +108,8 @@ class TestDeliveryAddress(object):
         randomStreet=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomStreet,street_address)
         Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
-        print Keywords.WebElement(driver,street_address).get_attribute("value")
+        #print Keywords.WebElement(driver,street_address).get_attribute("value")
+        Keywords.getAttributeValue(driver,street_address)
         #assert (Keywords.getText(driver,street_address)==randomStreet),"Street address not entered correctly %s %s" %(randomStreet,Keywords.getText(driver,street_address))
         
         address_line2="//*[@name='Address_Line_2']"

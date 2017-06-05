@@ -63,12 +63,13 @@ def generateRandom(letter,digits,punctuation,size):
         chars+=chars+string.punctuation
     return str(''.join(numpy.random.choice(list(chars), size=size)))
 
-def getAttributeValue(driver,xPath):
+def getAttributeByValue(driver,xPath):
     wait=WebDriverWait(driver,5)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
-        return WebElement(driver, xPath).get_attribute("value")
+        return WebElement(driver,xPath).get_attribute("value")
+    
 def enterText(driver,text,xPath):
     wait=WebDriverWait(driver,5)
     try:

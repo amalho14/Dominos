@@ -69,6 +69,12 @@ def enterText(driver,text,xPath):
     finally:
         WebElement(driver, xPath).clear()
         WebElement(driver, xPath).send_keys(text)
+def getAttributeValue(driver,xPath):
+    wait=WebDriverWait(driver,5)
+    try:
+        wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
+    finally:
+        return WebElement(driver,xPath).get_attribute("value")
     
     
     
