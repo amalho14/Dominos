@@ -69,7 +69,8 @@ class TestCarryoutSelectPizza(object):
         close="//*[contains(@class,'js-closeButton')]"
         Keywords.ClickElement(driver,close)
         couponError="//*[@class='couponHeader__text']"
-        assert (Keywords.getText(driver,couponError)==True),"Coupon error not displayed when empty order"
+        error="COUPON INCOMPLETE"
+        assert (Keywords.getText(driver,couponError)==error),"Coupon error not displayed when empty order"
         
         
         

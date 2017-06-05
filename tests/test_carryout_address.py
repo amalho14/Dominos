@@ -13,7 +13,8 @@ class TestCarryoutAddress(object):
         Keywords.ClickElement(driver, carryout_button)
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         assert (Keywords.isElementSelected(driver, carryoutRadio) is True), "Carryout Icon is not selected"
-         
+        if(len(driver.find_elements_by_xpath((toggleZip)))>0):
+            Keywords.ClickElement(driver,toggleZip) 
         state_values=['Select', 'AK', 'AL', 'AR', 'AZ', 
               'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 
               'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 
@@ -68,7 +69,16 @@ class TestCarryoutAddress(object):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
         Keywords.ClickElement(driver, carryout_button)
-         
+        
+        zip_code="//*[@name='Postal_Code']"
+        randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomZip,zip_code)
+        Keywords.WebElement(driver,zip_code).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
+        
+        if(len(driver.find_elements_by_xpath((toggleZip)))>0):
+            Keywords.ClickElement(driver,toggleZip)
+        
         city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomCity,city)
@@ -80,11 +90,6 @@ class TestCarryoutAddress(object):
         state_AZ="//*[@name='Region']/option[contains(text(),'AZ')]"
         Keywords.ClickElement(driver,state_AZ)
          
-        zip_code="//*[@name='Postal_Code']"
-        randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
-        Keywords.enterText(driver,randomZip,zip_code)
-        Keywords.WebElement(driver,zip_code).send_keys(Keys.TAB)
-        assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
          
          
          
