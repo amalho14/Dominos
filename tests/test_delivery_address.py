@@ -1,6 +1,7 @@
 from tests import Keywords
 import pytest
 from tests.Setup import navigate_to_dominos
+import org.openqa.selenium.Keys
 
 @pytest.mark.usefixtures('driver')
 class TestDeliveryAddress(object):
@@ -105,6 +106,7 @@ class TestDeliveryAddress(object):
         street_address="//*[@name='Street']"
         randomStreet=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomStreet,street_address)
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
         assert (Keywords.getText(driver,street_address)==randomStreet),"Street address not entered correctly %s %s" %(randomStreet,Keywords.getText(driver,street_address))
         
         address_line2="//*[@name='Address_Line_2']"
