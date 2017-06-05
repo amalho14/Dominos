@@ -36,6 +36,9 @@ class TestCarryoutSelectPizza(object):
     def test_carryout_pizza_select_unit(self,driver):
         #Get to the pizza select page
         navigate_to_select_pizza(driver)
+        cityValue="TEMPE"
+        stateValue="AZ"
+        zip_codeValue="85281"
         myAddress="%s, %s %s",(cityValue,state_AZ,zip_code)
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
         elements=Keywords.WebElements(driver,myLocation)
