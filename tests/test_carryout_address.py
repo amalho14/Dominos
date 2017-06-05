@@ -47,6 +47,45 @@ class TestCarryoutAddress(object):
         assert(Keywords.getText(driver, zip_code)=="*Zip Code:"),"Zip Code doesn't match"
         
         
+    def test_carryout_address_api(self,driver):
+        navigate_to_dominos(driver)
+        carryout_button="//*[contains(@class,'js-carryout')]"
+        Keywords.ClickElement(driver, carryout_button)
+        submit="//*[contains(@class,'js-search-cta')]"
+        Keywords.ClickElement(driver, submit)
+        error="This field is required."
+        
+        city_error="//*[@id='City-error']"
+        assert (Keywords.getText(driver, city_error)==error), "City Error is not the same as expected"
+        
+        state_error="//*[@id='Region-error']"
+        assert (Keywords.getText(driver, state_error)==error),"State Error is not the same as expected"
+        
+        postal_code_error="//*[@id='Postal_Code-error']"
+        assert (Keywords.getText(driver, postal_code_error)==error),"Zip Code Error is not the same as expected"
+    
+    def test_carryout_address_ui_component(self,driver):
+        navigate_to_dominos(driver)
+        carryout_button="//*[contains(@class,'js-carryout')]"
+        Keywords.ClickElement(driver, carryout_button)
+        
+        city="//*[@name='City']" 
+        randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomCity,city)
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,city)==randomCity),"City is not entered correctly"
+        
+        state="//*[@name='Region']"
+        Keywords.ClickElement(driver,state)
+        state_AZ="//*[@name='Region']/option[contains(text(),'AZ')]"
+        Keywords.ClickElement(driver,state_AZ)
+        
+        zip_code="//*[@name='Postal_Code']"
+        randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomZip,zip_code)
+        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
+        
         
         
         
