@@ -3,11 +3,7 @@ import pytest
 from tests.Setup import navigate_to_dominos
 
 
-
-
-@pytest.mark.usefixtures('driver')
-class TestCarryoutSelectPizza(object):
-    def navigate_to_select_pizza(driver):
+def navigate_to_select_pizza(driver):
         #Get to the pizza select page
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
@@ -32,6 +28,10 @@ class TestCarryoutSelectPizza(object):
         Keywords.ClickElement(driver,orderCarryOutLocation)
         awaitingOrder="//*[contains(@class,'js-emptyMessage')]"
         Keywords.isElementVisible(driver,awaitingOrder)
+
+@pytest.mark.usefixtures('driver')
+class TestCarryoutSelectPizza(object):
+    
     
     def test_carryout_pizza_select_unit(self,driver):
         #Get to the pizza select page
