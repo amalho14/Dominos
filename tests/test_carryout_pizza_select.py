@@ -10,6 +10,9 @@ def navigate_to_select_pizza(driver):
         Keywords.ClickElement(driver, carryout_button)
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         Keywords.isElementVisible(driver,carryoutRadio)
+        toggleZip="//*[contains(@class,'toggle-zip')]/a"
+        if(Keywords.isElementVisible(driver,toggleZip)):
+            Keywords.ClickElement(driver,toggleZip)
         city="//*[@name='City']" 
         cityValue="TEMPE"
         Keywords.enterText(driver,cityValue,city)
@@ -39,7 +42,7 @@ class TestCarryoutSelectPizza(object):
         cityValue="TEMPE"
         state_AZ="AZ"
         zip_code="85281"
-        myAddress="%s, %s %s",(cityValue,state_AZ,zip_code)
+        myAddress=cityValue+', '+state_AZ+' '+zip_code
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
         elements=Keywords.WebElements(driver,myLocation)
         for element in elements:
@@ -65,7 +68,7 @@ class TestCarryoutSelectPizza(object):
         
         
         
-        
+   
         
         
         
