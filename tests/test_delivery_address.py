@@ -115,7 +115,7 @@ class TestDeliveryAddress(object):
         Keywords.enterText(driver,randomAddressLine2,address_line2)
         #assert (Keywords.getText(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
         
-        city="//*[@for='City']" 
+        city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomCity,city)
         #assert (Keywords.getText(driver,city)==randomCity),"City is not entered correctly"
