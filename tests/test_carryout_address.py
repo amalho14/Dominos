@@ -13,6 +13,8 @@ class TestCarryoutAddress(object):
         Keywords.ClickElement(driver, carryout_button)
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         assert (Keywords.isElementSelected(driver, carryoutRadio) is True), "Carryout Icon is not selected"
+        
+        toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
             Keywords.ClickElement(driver,toggleZip) 
         state_values=['Select', 'AK', 'AL', 'AR', 'AZ', 
@@ -76,6 +78,7 @@ class TestCarryoutAddress(object):
         Keywords.WebElement(driver,zip_code).send_keys(Keys.TAB)
         assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
         
+        toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
             Keywords.ClickElement(driver,toggleZip)
         

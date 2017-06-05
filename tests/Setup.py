@@ -15,7 +15,7 @@ def openSauceLabs(platform):
     
     #Must be changed to a new function
     
-    if(Keywords.isElementVisible(driver, "//*[@aria-label='Close Overlay']") is True):
+    if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
         Keywords.ClickElement(driver, "//*[@aria-label='Close Overlay']")
     return driver
 def navigate_to_dominos(driver):
