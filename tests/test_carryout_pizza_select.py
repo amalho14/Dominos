@@ -10,8 +10,11 @@ def navigate_to_select_pizza(driver):
         Keywords.ClickElement(driver, carryout_button)
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         Keywords.isElementVisible(driver,carryoutRadio)
+        zip_code="//*[@name='Postal_Code']"
+        zip_codeValue="85281"
+        Keywords.enterText(driver,"85281",zip_code)
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
-        if(Keywords.isElementVisible(driver,toggleZip)):
+        if(len(driver.find_elements_by_xpath((toggleZip)))>0):
             Keywords.ClickElement(driver,toggleZip)
         city="//*[@name='City']" 
         cityValue="TEMPE"
@@ -21,9 +24,7 @@ def navigate_to_select_pizza(driver):
         state_AZ="//*[@name='Region']/option[contains(text(),'AZ')]"
         stateValue="AZ"
         Keywords.ClickElement(driver,state_AZ)
-        zip_code="//*[@name='Postal_Code']"
-        zip_codeValue="85281"
-        Keywords.enterText(driver,"85281",zip_code)
+        
         submit="//*[@type='submit']"
         Keywords.ClickElement(driver,submit)
         Keywords.isElementVisible(driver,"//*[@class='based-on']")
