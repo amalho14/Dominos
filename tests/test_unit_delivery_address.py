@@ -3,7 +3,7 @@ import pytest
 from tests.Setup import navigate_to_dominos
 
 @pytest.mark.usefixtures('driver')
-class TestDeliveryAddress(object):
+class estDeliveryAddress(object):
     
     
     def test_delivery_address_unit(self,driver):
