@@ -11,44 +11,44 @@ def WebElements(driver,xPath):
     return driver.find_elements_by_xpath(xPath)
 
 def ClickElement(driver, xPath):
-    wait = WebDriverWait(driver, 5)
+    wait = WebDriverWait(driver, 10)
     wait.until(EC.element_to_be_clickable((By.XPATH,xPath)))
     WebElement(driver, xPath).click()
 
 def getText(driver, xPath):
-    wait = WebDriverWait(driver, 5)
+    wait = WebDriverWait(driver, 10)
     wait.until(EC.presence_of_element_located((By.XPATH, xPath)))
     return WebElement(driver, xPath).text
 
 def isElementEnabled(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
         return WebElement(driver, xPath).is_enabled()
     
 def isElementVisible(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
         return WebElement(driver, xPath).is_displayed()
     
 def isElementSelected(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
         return WebElement(driver, xPath).is_selected()
 
 def getType(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
         return WebElement(driver,xPath).get_attribute("type")
 def getAttributeLength(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
@@ -63,14 +63,14 @@ def generateRandom(letter,digits,punctuation,size):
         chars+=chars+string.punctuation
     return ''.join(numpy.random.choice(list(chars), size=size))
 def enterText(driver,text,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:
         WebElement(driver, xPath).clear()
         WebElement(driver, xPath).send_keys(text)
 def getAttributeValue(driver,xPath):
-    wait=WebDriverWait(driver,5)
+    wait=WebDriverWait(driver,10)
     try:
         wait.until(EC.presence_of_element_located((By.XPATH,xPath)))
     finally:

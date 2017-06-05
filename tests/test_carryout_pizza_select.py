@@ -4,6 +4,7 @@ from tests.Setup import navigate_to_dominos
 
 
 
+
 @pytest.mark.usefixtures('driver')
 class TestCarryoutSelectPizza(object):
     
@@ -12,6 +13,9 @@ class TestCarryoutSelectPizza(object):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
         Keywords.ClickElement(driver, carryout_button)
+        carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
+        Keywords.isElementVisible(driver,carryoutRadio)
+        
         city="//*[@name='City']" 
         cityValue="TEMPE"
         Keywords.enterText(driver,cityValue,city)
