@@ -113,13 +113,13 @@ class TestDeliveryAddress(object):
         address_line2="//*[@name='Address_Line_2']"
         randomAddressLine2=Keywords.generateRandom('letter','digits','punctuation',10)
         Keywords.enterText(driver,randomAddressLine2,address_line2)
-        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        Keywords.WebElement(driver,address_line2).send_keys(Keys.TAB)
         assert (Keywords.getAttributeValue(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
         
         city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomCity,city)
-        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        Keywords.WebElement(driver,city).send_keys(Keys.TAB)
         assert (Keywords.getAttributeValue(driver,city)==randomCity),"City is not entered correctly"
 
         state="//*[@name='Region']"
@@ -130,7 +130,7 @@ class TestDeliveryAddress(object):
         zip_code="//*[@name='Postal_Code']"
         randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomZip,zip_code)
-        Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
+        Keywords.WebElement(driver,zip_code).send_keys(Keys.TAB)
         assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
         
         
