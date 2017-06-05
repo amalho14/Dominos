@@ -18,3 +18,16 @@ class TestDeliveryHome(object):
             Keywords.isElementVisible(driver,"//*[@class='form']/div/div/h2/span")
         finally:
             assert (driver.title=="Location Search - Location Search"),"After Delivery Button is clicked either page not visible or wrong page"
+    
+    def test_carryout_button(self,driver):
+        navigate_to_dominos(driver)
+        carryout_button="//*[contains(@class,'js-carryout')]"
+        button_text=Keywords.getText(driver, carryout_button)
+        assert (button_text=='CARRYOUT'),"Text of Carryout Button is incorrect, expected: %s"%'CARRYOUT'
+        assert (Keywords.isElementEnabled(driver, carryout_button) is True),"Deliver Button is not enabled"
+        Keywords.ClickElement(driver, carryout_button)
+        try:
+            Keywords.isElementVisible(driver,"//*[@class='form']/div/div/h2/span")
+        finally:
+            assert (driver.title=="Location Search - Location Search"),"After Delivery Button is clicked either page not visible or wrong page"
+        

@@ -24,7 +24,7 @@ class TestCarryoutAddress(object):
         states=state+"/option"
         stateElements=Keywords.WebElements(driver,states)
         statesList=[]
-        for state in statesElements:
+        for state in stateElements:
             statesList.append(state.text) 
         for state in state_values:
             assert(state in statesList),"State not available in list: %s"%state
@@ -45,3 +45,13 @@ class TestCarryoutAddress(object):
         
         zip_code="//*[@for='Postal_Code']"
         assert(Keywords.getText(driver, zip_code)=="*Zip Code:"),"Zip Code doesn't match"
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
