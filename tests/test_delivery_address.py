@@ -133,11 +133,6 @@ class TestDeliveryAddress(object):
         Keywords.WebElement(driver,street_address).send_keys(Keys.TAB)
         assert (Keywords.getAttributeValue(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
         
-        submit="//*[@type='submit']"
-        Keywords.ClickElement(driver,submit)
-        buildyourown="//*[contains(@class,'navigation-BuildYourOwn')]"
-        Keywords.isElementVisible(driver,buildyourown)
-        assert "Entrees Home" in driver.title
         
         
         
