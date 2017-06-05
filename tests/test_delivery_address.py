@@ -33,15 +33,15 @@ class TestDeliveryAddress(object):
         
         address_line2="//*[@name='Address_Line_2']"
         assert (Keywords.getType(driver, address_line2)=="text"),"Attribute for Address Line 2 is incorrect,expected: %s for %s" %("text",'House')
-        assert (Keywords.getAttributeLengh(driver,address_line2)=='40'),"Max Length for Address Line 2 is incorrect, expected:%s for %s" % ('40','House')
+        assert (Keywords.getAttributeLength(driver,address_line2)=='40'),"Max Length for Address Line 2 is incorrect, expected:%s for %s" % ('40','House')
         
         city="//*[@name='City']"
         assert (Keywords.getType(driver, city)=="text"),"Attribute for city is incorrect, expected :%s for %s"%("text",'House')
-        assert (Keywords.getAttributeLengh(driver,city)=='40'),"Max Length for city is incorrect, expected:%s for %s" % ('40','House')
+        assert (Keywords.getAttributeLength(driver,city)=='40'),"Max Length for city is incorrect, expected:%s for %s" % ('40','House')
         
         zip_code="//*[@name='Postal_Code']"
         assert (Keywords.getType(driver, zip_code)=="tel"),"Attribute for Zip Code is incorrect,expected: %s for %s"%("tel",'House')
-        assert (Keywords.getAttributeLengh(driver,city)=='10'),"Max Length for Zip Code is incorrect, expected:%s for %s" % ('10','House')
+        assert (Keywords.getAttributeLength(driver,city)=='10'),"Max Length for Zip Code is incorrect, expected:%s for %s" % ('10','House')
         
         Keywords.ClickElement(driver, "//*[@id='Address_Type_Select']/option")
         states="//*[@name='Region']/option"
@@ -102,16 +102,17 @@ class TestDeliveryAddress(object):
         addressPath="//*[@id='Address_Type_Select']/option[contains(text(),'House')]"
         Keywords.ClickElement(driver, addressPath)
         
-        street_address="//*[@for='Street']"
-        assert(Keywords.getText(driver, street_address)=="*Street Address:"),"Street address text does't match for address type: 'House'"
+        street_address="//*[@name='Street']"
+        randomStreet=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomStreet,street_address)
+        assert (Keywords.getText(driver,street_address)==randomStreet),"Street address not entered correctly"
+        address_line2="//*[@name='Address_Line_2']"
+        randomAddressLine2=Keywords.Keywords.generateRandom('letter','digits','punctuation',10)
+        assert (Keywords.getText(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
         city="//*[@for='City']" 
-        assert(Keywords.getText(driver, city)=="*City:"),"City text doesn't match for address type: 'House'"
-        state="//*[@for='Region']"
-        assert(Keywords.getText(driver, state)=="*State:"),"State doesn't match for address type: 'House'"
-        zip_code="//*[@for='Postal_Code']"
-        assert(Keywords.getText(driver, zip_code)=="*Zip Code:"),"Zip Code doesn't match for address type: 'House'"
-        address_line2="//*[@for='Address_Line_2']"
-        assert(Keywords.getText(driver, address_line2)=="Suite/Apt #"),"Suite/Apt# text doesn't match expected: %s for %s" % ("Suite/Apt #",add)
+        state="//*[@name='Region']"
+        zip_code="//*[@name='Postal_Code']"
+        
         
         
         
