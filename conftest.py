@@ -9,7 +9,7 @@ browsers = [
     {
         "browserName": "chrome",
         "platform": "Windows 10",
-        "version": "58.0",
+        "version": "56.0",
         "idleTimeout": "10"
     }, {
         "browserName": "safari",
