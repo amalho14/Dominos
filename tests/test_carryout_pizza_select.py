@@ -1,7 +1,6 @@
 from tests import Keywords
 import pytest
 from tests.Setup import navigate_to_dominos
-from common.Keywords import WebElement
 
 
 def navigate_to_select_pizza(driver):
