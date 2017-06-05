@@ -41,7 +41,7 @@ class TestDeliveryAddress(object):
         
         zip_code="//*[@name='Postal_Code']"
         assert (Keywords.getType(driver, zip_code)=="tel"),"Attribute for Zip Code is incorrect,expected: %s for %s"%("tel",'House')
-        assert (Keywords.getAttributeLength(driver,city)=='10'),"Max Length for Zip Code is incorrect, expected:%s for %s" % ('10','House')
+        assert (Keywords.getAttributeLength(driver,zip_code)=='10'),"Max Length for Zip Code is incorrect, expected:%s for %s" % ('10','House')
         
         Keywords.ClickElement(driver, "//*[@id='Address_Type_Select']/option")
         states="//*[@name='Region']/option"
@@ -106,13 +106,27 @@ class TestDeliveryAddress(object):
         randomStreet=Keywords.generateRandom('letter','digits','punctuation',20)
         Keywords.enterText(driver,randomStreet,street_address)
         assert (Keywords.getText(driver,street_address)==randomStreet),"Street address not entered correctly"
+        
         address_line2="//*[@name='Address_Line_2']"
         randomAddressLine2=Keywords.Keywords.generateRandom('letter','digits','punctuation',10)
+        Keywords.enterText(driver,randomAddressLine2,address_line2)
         assert (Keywords.getText(driver,address_line2)==randomAddressLine2),"Street address 2 not entered correctly"
-        city="//*[@for='City']" 
-        state="//*[@name='Region']"
-        zip_code="//*[@name='Postal_Code']"
         
+        city="//*[@for='City']" 
+        randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomCity,city)
+        assert (Keywords.getText(driver,city)==randomCity),"City is not entered correctly"
+
+        state="//*[@name='Region']"
+        Keywords.ClickElement(driver,state)
+        state_AZ="//*[@name='Region']/option[contains(text(),'AZ')]"
+        Keywords.ClickElement(driver,state_AZ)
+        
+        
+        zip_code="//*[@name='Postal_Code']"
+        randomZip=Keywords.generateRandom('letter','digits','punctuation',20)
+        Keywords.enterText(driver,randomZip,zip_code)
+        assert (Keywords.getText(driver,zip_code)!=randomZip),"Zip Code entered with Alphabets and Punctuation"
         
         
         
