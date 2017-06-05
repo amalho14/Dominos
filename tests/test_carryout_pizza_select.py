@@ -1,6 +1,7 @@
 from tests import Keywords
 import pytest
 from tests.Setup import navigate_to_dominos
+from common.Keywords import WebElement
 
 
 def navigate_to_select_pizza(driver):
@@ -30,6 +31,11 @@ def navigate_to_select_pizza(driver):
         Keywords.isElementVisible(driver,"//*[@class='based-on']")
         orderCarryOutLocation="//*[contains(@class,'search-results-list')]/div/div[1]/div/a"
         Keywords.ClickElement(driver,orderCarryOutLocation)
+        changeOrderTimingOverlay="//*[@id='changeOrderTimingOverlay']/div/form//div/select"
+        if(len(driver.find_elements_by_xpath(changeOrderTimingOverlay))>0):
+            Keywords.ClickElement(changeOrderTimingOverlay)
+            selectTime=changeOrderTimingOverlay+"/option[3]"
+            Keywords.ClickElement(selectTime)
         awaitingOrder="//*[contains(@class,'js-emptyMessage')]"
         Keywords.isElementVisible(driver,awaitingOrder)
 
