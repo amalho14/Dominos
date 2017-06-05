@@ -37,7 +37,7 @@ class TestCarryoutSelectPizza(object):
         #Get to the pizza select page
         navigate_to_select_pizza(driver)
         cityValue="TEMPE"
-        stateValue="AZ"
+        state_AZ="AZ"
         zip_codeValue="85281"
         myAddress="%s, %s %s",(cityValue,state_AZ,zip_code)
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
@@ -45,6 +45,61 @@ class TestCarryoutSelectPizza(object):
         for element in elements:
             if(element.text!=""):
                 assert (element.text==myAddress),"Address not same for checkout"
+        
+        carryOutRadio="//*[@id='Service_Method_Carryout']"
+        assert (Keywords.isElementSelected(driver,carryOutRadio)==True),"Carryout Radio Button is not selected while ordering"
+        orderTimingNow="//*[@id='Order_Timing_Now']"
+        orderTimeFuture="//*[@id='Order_Timing_Future']"
+        assert(Keywords.isElementVisible(driver,orderTimingNow)==True),"Order Timing now is not visible while ordering"
+        assert(Keywords.isElementVisible(driver,orderTimeFuture)==True),"Order Timing future is not visible while ordering"
+        
+    def test_carry_out_pizza_select_api(self,driver):
+        navigate_to_select_pizza(driver)
+        coupon="//*[contains(@class,'media--coupon--featured-image')]"
+        Keywords.ClickElement(driver,coupon)
+        couponError="//*[@class='couponHeader__text']"
+        assert (Keywords.getText(driver,coupon)==True),"Coupon error not displayed when empty order"
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
                 
         
         
