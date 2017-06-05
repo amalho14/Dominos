@@ -1,7 +1,7 @@
 ## Continuous Integration Pipeline-Python-Pytest-Selenium-SauceLabs
 
 This code is meant for building Continuous Integration pipeline using Python.
-It demonstrates the use of Selenium in conjuction with SauceLabs for parallel test execution.
+It demonstrates the use of Selenium in conjuction with Sauce Labs for parallel test execution.
 
 ### Environment Setup
 
@@ -13,7 +13,7 @@ It demonstrates the use of Selenium in conjuction with SauceLabs for parallel te
     ```
     * Install [pip](https://pip.pypa.io/en/stable/installing/) for package installation
 
-2. Sauce Credentials
+2. Sauce Labs Credentials
     * In the terminal export your Sauce Labs Credentials as environmental variables:
     ```
     $ export SAUCE_USERNAME=<your Sauce Labs username>
@@ -34,12 +34,12 @@ It demonstrates the use of Selenium in conjuction with SauceLabs for parallel te
 *  Tests in Parallel:
     ```$ py.test -s -n <number> tests```
 
-* Dump session ids for the SauceLabs CI plugins:
+* Dump session ids for the Sauce Labs CI plugins:
     ```$ cat $(find . -name "*.testlog")```
 
 ### Troubleshooting/Recommendation:
 
-* To view live testing go to SauceLabs Dashboard: [SauceLabs](https://saucelabs.com/)
+* To view live testing go to Sauce Labs Dashboard: [Sauce Labs](https://saucelabs.com/)
 
 * Might face latency when connecting to Sauce Labs using Selenium Remote WebDriver. Selenium Waits may need to be increased. 
 
@@ -48,4 +48,5 @@ It demonstrates the use of Selenium in conjuction with SauceLabs for parallel te
 ##### [Sauce Labs Documentation](https://wiki.saucelabs.com/)
 
 ##### [Pytest Documentation](http://pytest.org/latest/contents.html)
-    
+
+##### [Selenium Documentation](http://www.seleniumhq.org/docs/)
