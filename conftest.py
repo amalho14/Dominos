@@ -11,13 +11,13 @@ browsers = [
         "platform": "Windows 10",
         "version": "56.0",
         "idleTimeout": "15"
-    },
-          {
-        "browserName": "safari",
-        "platform": "OS X 10.10",
-        "version": "8.0",
-        "idleTimeout": "15"
     }]
+#           {
+#         "browserName": "safari",
+#         "platform": "OS X 10.10",
+#         "version": "8.0",
+#         "idleTimeout": "15"
+#     }]
 
 def pytest_generate_tests(metafunc):
     if 'driver' in metafunc.fixturenames:
