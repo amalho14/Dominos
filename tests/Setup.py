@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-from tests import Webpage, Desktop,Keywords
+from tests import Webpage,Keywords
 
 def navigate_to_dominos(driver):
     driver.get(Webpage.dominosURL)
