@@ -3,6 +3,7 @@ import pytest
 from tests.Setup import navigate_to_dominos
 
 
+
 def navigate_to_select_pizza(driver):
         #Get to the pizza select page
         navigate_to_dominos(driver)
@@ -15,7 +16,7 @@ def navigate_to_select_pizza(driver):
         Keywords.enterText(driver,"85281",zip_code)
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            driver.find_element(toggleZip).click()
+            driver.find_element_by_xpath(toggleZip).click()
         city="//*[@name='City']" 
         cityValue="TEMPE"
         Keywords.enterText(driver,cityValue,city)
@@ -49,12 +50,13 @@ class TestCarryoutSelectPizza(object):
         cityValue="TEMPE"
         state_AZ="AZ"
         zip_code="85281"
-        myAddress=cityValue+', '+state_AZ+' '+zip_code
+        
+        myAddress=cityValue+', '+state_AZ+' ' +zip_code
         myLocation="//*[contains(@class,'qa-MyLoc')]/li"
         elements=Keywords.WebElements(driver,myLocation)
         for element in elements:
             if(element.text!=""):
-                assert (element.text==myAddress),"Address not same for checkout"
+                assert (element.text in myAddress),"Address not same for checkout"
         
         carryOutRadio="//*[@id='Service_Method_Carryout']"
         assert (Keywords.isElementSelected(driver,carryOutRadio)==True),"Carryout Radio Button is not selected while ordering"
@@ -94,11 +96,38 @@ class TestCarryoutSelectPizza(object):
         cart="//*[@class='order-summary__item__title']/a"
         cartElements=Keywords.WebElements(driver,cart)
         
-        assert (len(cartElements)==numberOfPizza),"Cart Not updated with the number of pizzas added"
+        assert (len(cartElements)==numberOfPizza),"Cart Not updated with the number of pizza's added"
+        
+        #Remove Item from cart
+        remove="//*[contains(@class,'js-removeVariant')]"
+        Keywords.ClickElement(driver,remove)
+        updatedPizzaNumber=numberOfPizza-1
+        newCart="//*[@class='order-summary__item__title']/a"
+        newCartElements=Keywords.WebElements(driver,newCart)
+        #Assertion if the item has been removed
+        assert (len(newCartElements)==updatedPizzaNumber),"Cart Not updated with the number of pizza's added after deletion"
         
         #Change the quantity
-        quantity="//*[@aria-label='Quantity:']/option[2]"
-        Keywords.ClickElement(quantity)
+        quantity="//*[@aria-label='Quantity:']"
+        Keywords.ClickElement(driver,quantity)
+        selectQuantity=quantity+"/option[2]"
+        Keywords.ClickElement(driver,selectQuantity)
+        
+        
+        
+        checkout="//*[contains(@class,'order-buttonCheckout-text')]"
+        Keywords.ClickElement(driver,checkout)
+        overlay="//*[@class='card--overlay__close js-closeButton']"
+        if(len(driver.find_elements_by_xpath(overlay))>0):
+            Keywords.ClickElement(driver,overlay)
+        reviewOrder="//*[@class='card__title__icon'][contains(text(),'Review Order Settings')]"
+        Keywords.isElementVisible(driver,reviewOrder)
+        visible=len(driver.find_elements_by_xpath(reviewOrder))
+        assert (visible>0),"Page not navigated after selecting pizza"
+        
+        
+        
+        
         
         
                 

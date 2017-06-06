@@ -16,7 +16,7 @@ class TestCarryoutAddress(object):
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            driver.find_element_by_xpath(toggleZip).click()
+            Keywords.ClickElement(driver,toggleZip)
         state_values=['Select', 'AK', 'AL', 'AR', 'AZ', 
               'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 
               'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 
@@ -57,7 +57,7 @@ class TestCarryoutAddress(object):
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            Keywords.ClickElement(driver,toggleZip).click()
+            Keywords.ClickElement(driver,toggleZip)
         
         submit="//*[contains(@class,'js-search-cta')]"
         Keywords.ClickElement(driver, submit)
@@ -86,7 +86,7 @@ class TestCarryoutAddress(object):
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            Keywords.ClickElement(driver,toggleZip).click()
+            driver.find_element_by_xpath(toggleZip).click()
         
         city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
