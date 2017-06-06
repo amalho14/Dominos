@@ -1,4 +1,5 @@
 ## Continuous Integration Pipeline-Python-Pytest-Selenium-SauceLabs
+[![Build Status](https://travis-ci.org/amalho14/Dominos.svg?branch=master)](https://travis-ci.org/amalho14/Dominos)
 
 This code is meant for building Continuous Integration pipeline using Python.
 It demonstrates the use of Selenium in conjunction with Sauce Labs for parallel test execution.
