@@ -32,10 +32,7 @@ It demonstrates the use of Selenium in conjuction with Sauce Labs for parallel t
 ### Running Tests:  -n option designates number of parallel tests and -s to disable output capture.
 
 *  Tests in Parallel:
-    ```$ py.test -s -n <number> tests```
-
-* Dump session ids for the Sauce Labs CI plugins:
-    ```$ cat $(find . -name "*.testlog")```
+    ```$ py.test -s -n 8 $TESTFILE```
 
 ### Troubleshooting/Recommendation:
 
