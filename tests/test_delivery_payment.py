@@ -29,7 +29,7 @@ def navigate_to_payment(driver):
     Keywords.ClickElement(driver,continueCheckout)
 
 @pytest.mark.usefixtures('driver')
-class TestDeliveryPayment(object):
+class TestPayment(object):
     
     def test_delivery_payment_unit(self,driver):
         navigate_to_payment(driver)
@@ -41,7 +41,7 @@ class TestDeliveryPayment(object):
         remainingBalance=Keywords.getText(driver,balanceDue)
         assert (totalSummary==remainingBalance),"Balance not equal"
     
-    def test_delivery_payment_api(self,driver):
+    def test_delivery_carryout_payment_api(self,driver):
         navigate_to_payment(driver)
         placeOrder="//*[contains(@class,'js-placeOrder')]"
         Keywords.ClickElement(driver,placeOrder)
@@ -51,8 +51,4 @@ class TestDeliveryPayment(object):
                    ]
         
         for path in errorLocation:
-            assert(Keywords.getText(driver,path)==error),"Error not populated for path %s"%path
-            
-            
-            
-            
+            assert(Keywords.getText(driver,path)==error),"Error not populated for path %s"%path  

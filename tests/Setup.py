@@ -11,8 +11,8 @@ def navigate_to_dominos(driver):
     close="//*[@aria-label='Close Overlay']"
     if(len(driver.find_elements_by_xpath(close))>0):
         wait = WebDriverWait(driver, 10)
-        wait.until(EC.element_to_be_clickable((By.XPATH,close)))
         try:
+            wait.until(EC.element_to_be_clickable((By.XPATH,close)))
             driver.find_element_by_xpath(close).click()
         #Forced to pass because by the time request is sent the element disappears
         except:
