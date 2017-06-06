@@ -8,7 +8,7 @@ env:
   - SAUCE_USERNAME=anveshmalhotra
   - SAUCE_ACCESS_KEY=6d27c807-1c2b-41e4-9411-73944a17211e
 
-script: py.test -s -n 10 tests
+script: py.test -s -n 8 tests
 
 notifications:
   email:
