@@ -4,23 +4,11 @@ python:
 install: pip install -r requirements.txt
 
 env:
- -TESTFILE=tests/test_unit_delivery_home.py
- -TESTFILE=tests/test_carryout_address.py
- -TESTFILE=tests/test_delivery_address.py
- -TESTFILE=tests/test_carryout_pizza_select.py
- -TESTFILE=tests/test_delivery_pizza_select.py
- -TESTFILE=tests/test_carryout_delivery_pizza_add.py
- -TESTFILE=tests/test_delivery_payment.py
- 
- -TESTFILE=tests/test_e2e_dominos.py
- 
-
-env:
   global:
   - SAUCE_USERNAME=anveshmalhotra
   - SAUCE_ACCESS_KEY=6d27c807-1c2b-41e4-9411-73944a17211e
 
-script: py.test -s -n 10 $TESTFILE
+script: py.test -s -n 10 tests
 
 notifications:
   email:
