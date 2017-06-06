@@ -60,42 +60,11 @@ class TestDeliverySelectPizza(object):
         myLocation="//*[contains(@class,'qa-MyLoc')]/li[2]"
         assert (Keywords.getText(driver,myLocation) in myAddress),"Address not same for checkout"
         
-        carryOutRadio="//*[@id='Service_Method_Delivery']"
-        assert (Keywords.isElementSelected(driver,carryOutRadio)==True),"Carryout Radio Button is not selected while ordering"
+        deliveryRadioButton="//*[@id='Service_Method_Delivery']"
+        assert (Keywords.isElementSelected(driver,deliveryRadioButton)==True),"Carryout Radio Button is not selected while ordering"
         orderTimingNow="//*[@id='Order_Timing_Now']"
         orderTimeFuture="//*[@id='Order_Timing_Future']"
         assert(Keywords.isElementVisible(driver,orderTimingNow)==True),"Order Timing now is not visible while ordering"
         assert(Keywords.isElementVisible(driver,orderTimeFuture)==True),"Order Timing future is not visible while ordering"
         
-    def test_delivery_pizza_ui_component_checkout(self,driver):   
-        navigate_to_select_pizza(driver)
-        specialityPizza="//*[contains(@class,'order-entrees-specialtypizza')]/h2"
-        Keywords.ClickElement(driver,specialityPizza)
-        
-        order="//*[contains(@data-dpz-track-evt-name,'Order')]"
-        orderElements=Keywords.WebElements(driver,order)
-        
-        numberOfPizza=2
-        count=0
-        for element in orderElements:
-            if(count<numberOfPizza):
-                element.click()
-                addToOrder="//*[@type='submit'][contains(text(),'No, Add to Order Now')]"
-                Keywords.ClickElement(driver,addToOrder)
-                Keywords.isElementVisible(driver,order)
-                count+=1
-        
-        cart="//*[@class='order-summary__item__title']/a"
-        cartElements=Keywords.WebElements(driver,cart)
-        
-        assert (len(cartElements)==numberOfPizza),"Cart Not updated with the number of pizza's added"
-        checkout="//*[contains(@class,'order-buttonCheckout-text')]"
-        Keywords.ClickElement(driver,checkout)
-        overlay="//*[@class='card--overlay__close js-closeButton']"
-        if(len(driver.find_elements_by_xpath(overlay))>0):
-            Keywords.ClickElement(driver,overlay)
-        reviewOrder="//*[@class='card__title__icon'][contains(text(),'Review Order Settings')]"
-        Keywords.isElementVisible(driver,reviewOrder)
-        visible=len(driver.find_elements_by_xpath(reviewOrder))
-        assert (visible>0),"Page not navigated after selecting pizza"
         

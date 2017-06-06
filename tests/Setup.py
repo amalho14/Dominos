@@ -1,30 +1,16 @@
-from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
 from tests import Webpage, Desktop,Keywords
 
-def openSauceLabs(platform):
-    username = "anveshmalhotra"
-    authkey = "6d27c807-1c2b-41e4-9411-73944a17211e"
-    saucelabconnect = "http://" + username + ":" + authkey + "@ondemand.saucelabs.com:80/wd/hub"
-    if platform == "Windows-Chrome":
-        capabilities = Desktop.chrome()
-    elif platform == "Mac-Safari":
-        capabilities = Desktop.safari()
-    driver = webdriver.Remote(command_executor=saucelabconnect, desired_capabilities=capabilities)
-    driver.get(Webpage.dominosURL)
-    
-    #Must be changed to a new function
-    
-    if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
-        driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
-    return driver
 def navigate_to_dominos(driver):
     driver.get(Webpage.dominosURL)
     #Must be changed to a new function
     Keywords.isElementVisible(driver,"//*[contains(@class,'start-your-order')]")
-    if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
-        Keywords.ClickElement(driver,"//*[@aria-label='Close Overlay']")
-        #driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
-
-#driver=openSauceLabs("Windows-Chrome")
-    
+    close="//*[@aria-label='Close Overlay']"
+    if(len(driver.find_elements_by_xpath(close))>0):
+        wait = WebDriverWait(driver, 15)
+        wait.until(EC.element_to_be_clickable((By.XPATH,close)))
+        if (driver.find_element_by_xpath(close).is_displayed()):
+            driver.find_element_by_xpath(close).click()
