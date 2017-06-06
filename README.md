@@ -1,7 +1,7 @@
 ## Continuous Integration Pipeline-Python-Pytest-Selenium-SauceLabs
 
 This code is meant for building Continuous Integration pipeline using Python.
-It demonstrates the use of Selenium in conjuction with Sauce Labs for parallel test execution.
+It demonstrates the use of Selenium in conjunction with Sauce Labs for parallel test execution.
 
 ### Environment Setup
 

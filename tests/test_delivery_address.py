@@ -20,7 +20,7 @@ class TestDeliveryAddress(object):
         addressPath="//*[@id='Address_Type_Select']/option[contains(text(),'House')]"
         Keywords.ClickElement(driver, addressPath)
          
-        types_of_address=['Apartment','Business','Campus/Base','Hotel','Dormitory','Other']
+        types_of_address=['Apartment','Business','Campus/Base','Hotel','Dormitory','Other','House']
         address="//*[@id='Address_Type_Select']/option"
         assert (Keywords.isElementVisible(driver, address) is True),"Address is not available for selection"
         addressList=Keywords.WebElements(driver, address)

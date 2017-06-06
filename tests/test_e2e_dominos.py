@@ -9,18 +9,21 @@ def fill_form(driver):
     firstName="//*[@id='First_Name']"
     fName="Anvesh"
     Keywords.enterText(driver,fName,firstName)
+    #Value not populated in the HTML page and not able to Assert if the text has been entered
     #assert (Keywords.getAttributeValue(driver,firstName)==fName),"First Name Not entered correctly"
     
     lastName="//*[@id='Last_Name']"
     lName="Malhotra"
     Keywords.enterText(driver,lName,lastName)
     Keywords.WebElement(driver,lastName).send_keys(Keys.TAB)
+    #Value not populated in the HTML page and not able to Assert if the text has been entered
     #assert (Keywords.getAttributeValue(driver,lastName)==lName),"Last Name not entered correctly"
     
     email="//*[@id='Email']"
     emailAddress="test@xyz.com"
     Keywords.enterText(driver,emailAddress,email)
     Keywords.WebElement(driver,email).send_keys(Keys.TAB)
+    #Value not populated in the HTML page and not able to Assert if the text has been entered
     #assert (Keywords.getAttributeValue(driver,email)==emailAddress),"Email Addres not entered correctly"
     
     
@@ -28,6 +31,7 @@ def fill_form(driver):
     phone="1234567890"
     Keywords.enterText(driver,phone,callbackPhone)
     Keywords.WebElement(driver,callbackPhone).send_keys(Keys.TAB)
+    #Value not populated in the HTML page and not able to Assert if the text has been entered
     #assert (Keywords.getAttributeValue(driver,callbackPhone)==phone),"Phone not entered correctly"
     
     payAtStore="//*[contains(@class,'c-order-payment-cash')]"
@@ -46,8 +50,8 @@ class TestPayment(object):
         instruction="Call"
         Keywords.enterText(driver,instruction,deliveryInstructions)
         Keywords.WebElement(driver,deliveryInstructions).send_keys(Keys.TAB)
+        #Value not populated in the HTML page and not able to Assert if the text has been entered
         #assert (Keywords.getAttributeValue(driver,deliveryInstructions)==instruction),"Assert Delivery Instructions not entered correctly"
-        
         fill_form(driver)
         
         
