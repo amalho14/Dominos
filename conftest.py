@@ -10,13 +10,13 @@ browsers = [
         "browserName": "chrome",
         "platform": "Windows 10",
         "version": "56.0",
-        "idleTimeout": "5"
+        "idleTimeout": "15"
     },
           {
-        "browserName": "firefox",
+        "browserName": "safari",
         "platform": "OS X 10.10",
-        "version": "47.0",
-        "idleTimeout": "5"
+        "version": "8.0",
+        "idleTimeout": "15"
     }]
 
 def pytest_generate_tests(metafunc):
