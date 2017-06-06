@@ -13,9 +13,9 @@ browsers = [
         "idleTimeout": "5"
     },
           {
-        "browserName": "safari",
-        "platform": "macOS 10.12",
-        "version": "10.0",
+        "browserName": "firefox",
+        "platform": "OS X 10.10",
+        "version": "47.0",
         "idleTimeout": "5"
     }]
 
