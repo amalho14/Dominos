@@ -15,7 +15,7 @@ def navigate_to_select_pizza(driver):
         Keywords.enterText(driver,"85281",zip_code)
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            Keywords.ClickElement(driver,toggleZip)
+            driver.find_element(toggleZip).click()
         city="//*[@name='City']" 
         cityValue="TEMPE"
         Keywords.enterText(driver,cityValue,city)
@@ -31,6 +31,7 @@ def navigate_to_select_pizza(driver):
         orderCarryOutLocation="//*[contains(@class,'search-results-list')]/div/div[1]/div/a"
         Keywords.ClickElement(driver,orderCarryOutLocation)
         changeOrderTimingOverlay="//*[@id='changeOrderTimingOverlay']/div/form//div/select"
+        
         if(len(driver.find_elements_by_xpath(changeOrderTimingOverlay))>0):
             Keywords.ClickElement(changeOrderTimingOverlay)
             selectTime=changeOrderTimingOverlay+"/option[3]"
@@ -72,9 +73,37 @@ class TestCarryoutSelectPizza(object):
         error="COUPON INCOMPLETE"
         assert (Keywords.getText(driver,couponError)==error),"Coupon error not displayed when empty order"
         
+    def test_carry_out_pizza_ui_component_checkout(self,driver):   
+        navigate_to_select_pizza(driver)
+        specialityPizza="//*[contains(@class,'order-entrees-specialtypizza')]/h2"
+        Keywords.ClickElement(driver,specialityPizza)
+        
+        order="//*[contains(@data-dpz-track-evt-name,'Order')]"
+        orderElements=Keywords.WebElements(driver,order)
+        
+        numberOfPizza=2
+        count=0
+        for element in orderElements:
+            if(count<numberOfPizza):
+                element.click()
+                addToOrder="//*[@type='submit'][contains(text(),'No, Add to Order Now')]"
+                Keywords.ClickElement(driver,addToOrder)
+                Keywords.isElementVisible(driver,order)
+                count+=1
+        
+        cart="//*[@class='order-summary__item__title']/a"
+        cartElements=Keywords.WebElements(driver,cart)
+        
+        assert (len(cartElements)==numberOfPizza),"Cart Not updated with the number of pizzas added"
+        
+        #Change the quantity
+        quantity="//*[@aria-label='Quantity:']/option[2]"
+        Keywords.ClickElement(quantity)
         
         
-        
+                
+    
+    #def test_carry_out_pizza_ui_component_remove_add(self,driver):
    
         
         

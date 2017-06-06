@@ -16,13 +16,13 @@ def openSauceLabs(platform):
     #Must be changed to a new function
     
     if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
-        Keywords.ClickElement(driver, "//*[@aria-label='Close Overlay']")
+        driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
     return driver
 def navigate_to_dominos(driver):
     driver.get(Webpage.dominosURL)
     #Must be changed to a new function
     if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
-        Keywords.ClickElement(driver, "//*[@aria-label='Close Overlay']")
+        driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
     
 
 #driver=openSauceLabs("Windows-Chrome")

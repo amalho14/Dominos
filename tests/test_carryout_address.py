@@ -16,7 +16,7 @@ class TestCarryoutAddress(object):
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            Keywords.ClickElement(driver,toggleZip) 
+            driver.find_element_by_xpath(toggleZip).click()
         state_values=['Select', 'AK', 'AL', 'AR', 'AZ', 
               'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 
               'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 
@@ -54,10 +54,16 @@ class TestCarryoutAddress(object):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
         Keywords.ClickElement(driver, carryout_button)
+        
+        toggleZip="//*[contains(@class,'toggle-zip')]/a"
+        if(len(driver.find_elements_by_xpath((toggleZip)))>0):
+            Keywords.ClickElement(driver,toggleZip).click()
+        
         submit="//*[contains(@class,'js-search-cta')]"
         Keywords.ClickElement(driver, submit)
         error="This field is required."
-         
+        
+        
         city_error="//*[@id='City-error']"
         assert (Keywords.getText(driver, city_error)==error), "City Error is not the same as expected"
          
@@ -80,7 +86,7 @@ class TestCarryoutAddress(object):
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
-            Keywords.ClickElement(driver,toggleZip)
+            Keywords.ClickElement(driver,toggleZip).click()
         
         city="//*[@name='City']" 
         randomCity=Keywords.generateRandom('letter','digits','punctuation',20)
