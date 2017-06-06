@@ -11,6 +11,7 @@ def navigate_to_select_pizza(driver):
         Keywords.ClickElement(driver, carryout_button)
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         Keywords.isElementVisible(driver,carryoutRadio)
+        
         zip_code="//*[@name='Postal_Code']"
         zip_codeValue="85281"
         Keywords.enterText(driver,"85281",zip_code)
@@ -65,7 +66,7 @@ class TestCarryoutSelectPizza(object):
         assert(Keywords.isElementVisible(driver,orderTimingNow)==True),"Order Timing now is not visible while ordering"
         assert(Keywords.isElementVisible(driver,orderTimeFuture)==True),"Order Timing future is not visible while ordering"
         
-    def test_carry_out_pizza_select_api(self,driver):
+    def test_carryout_pizza_select_api(self,driver):
         navigate_to_select_pizza(driver)
         coupon="//*[contains(@class,'media--coupon--featured-image')]"
         Keywords.ClickElement(driver,coupon)
@@ -75,7 +76,7 @@ class TestCarryoutSelectPizza(object):
         error="COUPON INCOMPLETE"
         assert (Keywords.getText(driver,couponError)==error),"Coupon error not displayed when empty order"
         
-    def test_carry_out_pizza_ui_component_checkout(self,driver):   
+    def test_carryout_pizza_ui_component_checkout(self,driver):   
         navigate_to_select_pizza(driver)
         specialityPizza="//*[contains(@class,'order-entrees-specialtypizza')]/h2"
         Keywords.ClickElement(driver,specialityPizza)

@@ -13,7 +13,7 @@ class TestDeliveryAddress(object):
         delivery_button="//*[contains(@class,'js-delivery')]"
         Keywords.ClickElement(driver, delivery_button)
         
-         
+        
         deliveryRadio="//*[@name='Service_Type'][contains(@value,'Delivery')]"
         assert (Keywords.isElementSelected(driver, deliveryRadio) is True), "Delivery Icon is not selected"
          
@@ -80,6 +80,9 @@ class TestDeliveryAddress(object):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"
         Keywords.ClickElement(driver, delivery_button)
+        deliveryRadio="//*[@name='Service_Type'][contains(@value,'Delivery')]"
+        Keywords.isElementSelected(driver, deliveryRadio)
+        
         addressPath="//*[@id='Address_Type_Select']/option[contains(text(),'House')]"
         Keywords.ClickElement(driver, addressPath)
         submit="//*[contains(@class,'js-search-cta')]"
@@ -102,6 +105,9 @@ class TestDeliveryAddress(object):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"
         Keywords.ClickElement(driver, delivery_button)
+        deliveryRadio="//*[@name='Service_Type'][contains(@value,'Delivery')]"
+        Keywords.isElementSelected(driver, deliveryRadio)
+        
         addressPath="//*[@id='Address_Type_Select']/option[contains(text(),'House')]"
         Keywords.ClickElement(driver, addressPath)
          

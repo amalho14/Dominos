@@ -14,9 +14,16 @@ class TestCarryoutAddress(object):
         carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
         assert (Keywords.isElementSelected(driver, carryoutRadio) is True), "Carryout Icon is not selected"
         
+        zip_code="//*[@name='Postal_Code']"
+        assert (Keywords.getType(driver, zip_code)=="tel"),"Attribute for Zip Code is incorrect"
+        assert (Keywords.getAttributeLength(driver,zip_code)=='10'),"Max Length for Zip Code is incorrect"
+        zip_code="//*[@for='Postal_Code']"
+        assert(Keywords.getText(driver, zip_code)=="*Zip Code:"),"Zip Code doesn't match"
+        
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
             Keywords.ClickElement(driver,toggleZip)
+        
         state_values=['Select', 'AK', 'AL', 'AR', 'AZ', 
               'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 
               'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 
@@ -36,24 +43,22 @@ class TestCarryoutAddress(object):
         assert (Keywords.getType(driver, city)=="text"),"Attribute for city is incorrect"
         assert (Keywords.getAttributeLength(driver,city)=='40'),"Max Length for city is incorrect"
          
-        zip_code="//*[@name='Postal_Code']"
-        assert (Keywords.getType(driver, zip_code)=="tel"),"Attribute for Zip Code is incorrect"
-        assert (Keywords.getAttributeLength(driver,zip_code)=='10'),"Max Length for Zip Code is incorrect"
-         
+        
         city="//*[@for='City']" 
         assert(Keywords.getText(driver, city)=="*City:"),"City text doesn't match"
          
         state="//*[@for='Region']"
         assert(Keywords.getText(driver, state)=="*State:"),"State doesn't match"
          
-        zip_code="//*[@for='Postal_Code']"
-        assert(Keywords.getText(driver, zip_code)=="*Zip Code:"),"Zip Code doesn't match"
+        
          
          
     def test_carryout_address_api(self,driver):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
         Keywords.ClickElement(driver, carryout_button)
+        carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
+        Keywords.isElementSelected(driver, carryoutRadio)
         
         toggleZip="//*[contains(@class,'toggle-zip')]/a"
         if(len(driver.find_elements_by_xpath((toggleZip)))>0):
@@ -77,6 +82,8 @@ class TestCarryoutAddress(object):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
         Keywords.ClickElement(driver, carryout_button)
+        carryoutRadio="//*[@name='Service_Type'][contains(@value,'Carryout')]"
+        Keywords.isElementSelected(driver, carryoutRadio)
         
         zip_code="//*[@name='Postal_Code']"
         randomZip=Keywords.generateRandom('letter','digits','punctuation',20)

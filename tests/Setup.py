@@ -23,7 +23,8 @@ def navigate_to_dominos(driver):
     #Must be changed to a new function
     Keywords.isElementVisible(driver,"//*[contains(@class,'start-your-order')]")
     if(len(driver.find_elements_by_xpath("//*[@aria-label='Close Overlay']"))>0):
-        driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
+        Keywords.ClickElement(driver,"//*[@aria-label='Close Overlay']")
+        #driver.find_element_by_xpath("//*[@aria-label='Close Overlay']").click()
 
 #driver=openSauceLabs("Windows-Chrome")
     
