@@ -10,13 +10,14 @@ browsers = [
         "browserName": "chrome",
         "platform": "Windows 10",
         "version": "56.0",
-        "idleTimeout": "10"
-    }, {
-        "browserName": "safari",
-        "platform": "macOS 10.12",
-        "version": "10.0",
-        "idleTimeout": "10"
-    }]
+        "idleTimeout": "5"
+    }] 
+#             {
+#         "browserName": "safari",
+#         "platform": "macOS 10.12",
+#         "version": "10.0",
+#         "idleTimeout": "5"
+#     }]
 
 def pytest_generate_tests(metafunc):
     if 'driver' in metafunc.fixturenames:
@@ -71,14 +72,3 @@ def driver(request, browser_config):
     except WebDriverException:
         # we can ignore the exceptions of WebDriverException type -> We're done with tests.
         print('Warning: The driver failed to quit properly. Check test and server side logs.')
-
-# @pytest.hookimpl(tryfirst=True, hookwrapper=True)
-# def pytest_runtest_makereport(item, call):
-#     # this sets the result as a test attribute for SauceLabs reporting.
-#     # execute all other hooks to obtain the report object
-#     outcome = yield
-#     rep = outcome.get_result()
-# 
-#     # set an report attribute for each phase of a call, which can
-#     # be "setup", "call", "teardown"
-#     setattr(item, "rep_" + rep.when, rep)
