@@ -51,7 +51,7 @@ def navigate_to_select_pizza(driver):
 @pytest.mark.usefixtures('driver')
 class TestDeliverySelectPizza(object):
     
-    
+    #Verify if the user is able to view details while selecting pizza for delivery
     def test_delivery_pizza_select_unit(self,driver):
         #Get to the pizza select page
         navigate_to_select_pizza(driver)

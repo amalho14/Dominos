@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 #Unit Test for Delivery on Home Page
 @pytest.mark.usefixtures('driver')
 class TestDeliveryHome(object):
-     
+    #Verify if the user is able to select delivery as a order fullfilment 
     def test_delivery_button(self,driver):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"
@@ -18,7 +18,7 @@ class TestDeliveryHome(object):
             Keywords.isElementVisible(driver,"//*[@class='form']/div/div/h2/span")
         finally:
             assert (driver.title=="Location Search - Location Search"),"After Delivery Button is clicked either page not visible or wrong page"
-     
+    #Verify if the user is able to select carryout as a order fullfilment  
     def test_carryout_button(self,driver):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"

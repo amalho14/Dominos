@@ -30,7 +30,7 @@ def navigate_to_payment(driver):
 
 @pytest.mark.usefixtures('driver')
 class TestPayment(object):
-    
+    #Verify if the user is able to view the amount to be paid for the pizza's
     def test_delivery_payment_unit(self,driver):
         navigate_to_payment(driver)
         totalPrice="//*[@class='finalizedTotal js-total']"
@@ -41,6 +41,8 @@ class TestPayment(object):
         remainingBalance=Keywords.getText(driver,balanceDue)
         assert (totalSummary==remainingBalance),"Balance not equal"
     
+    
+    #Verify if the user is displayed with error when payment details have not been entered
     def test_delivery_carryout_payment_api(self,driver):
         navigate_to_payment(driver)
         placeOrder="//*[contains(@class,'js-placeOrder')]"

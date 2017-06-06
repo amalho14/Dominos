@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 @pytest.mark.usefixtures('driver')
 class TestCarryoutAddress(object):
      
+    #Verify if the user is able to view address details for pickup
     def test_carryout_address_unit(self,driver):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
@@ -52,7 +53,7 @@ class TestCarryoutAddress(object):
          
         
          
-         
+    #Verify if the user is displayed with error when address details are not entered for pickup     
     def test_carryout_address_api(self,driver):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"
@@ -77,7 +78,8 @@ class TestCarryoutAddress(object):
          
         postal_code_error="//*[@id='Postal_Code-error']"
         assert (Keywords.getText(driver, postal_code_error)==error),"Zip Code Error is not the same as expected"
-     
+        
+    #Verify if the user is able to enter address details for pickup 
     def test_carryout_address_ui_component(self,driver):
         navigate_to_dominos(driver)
         carryout_button="//*[contains(@class,'js-carryout')]"

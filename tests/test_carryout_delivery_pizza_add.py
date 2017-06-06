@@ -43,7 +43,8 @@ def navigate_to_select_pizza(driver):
 
 @pytest.mark.usefixtures('driver')
 class TestSelectPizza(object):
-        
+    
+    #Verify if the user selects a coupon and the cart is empty is displayed with an error    
     def test_carryout_delivery_pizza_select_api(self,driver):
         navigate_to_select_pizza(driver)
         coupon="//*[contains(@class,'media--coupon--featured-image')]"
@@ -53,7 +54,8 @@ class TestSelectPizza(object):
         couponError="//*[@class='couponHeader__text']"
         error="COUPON INCOMPLETE"
         assert (Keywords.getText(driver,couponError)==error),"Coupon error not displayed when empty order"
-        
+    
+    #Verify if the user is able to add pizza to cart    
     def test_carryout_delivery_pizza_ui_component_checkout(self,driver):   
         navigate_to_select_pizza(driver)
         specialityPizza="//*[contains(@class,'order-entrees-specialtypizza')]/h2"

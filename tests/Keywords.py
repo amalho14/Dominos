@@ -3,6 +3,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import string,numpy
 
+#This file contains of all the Keywords that are used for test execution
+
 
 def WebElement(driver, xPath):
     return driver.find_element_by_xpath(xPath)

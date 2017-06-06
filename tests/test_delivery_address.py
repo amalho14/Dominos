@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 @pytest.mark.usefixtures('driver')
 class TestDeliveryAddress(object):
      
-     
+    #Verify if the user is able to view address details for delivery 
     def test_delivery_address_unit(self,driver):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"
@@ -75,7 +75,7 @@ class TestDeliveryAddress(object):
          
          
          
-         
+    #Verify if the user is displayed with error when address details are not entered for delivery     
     def test_delivery_address_api(self,driver):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"
@@ -100,7 +100,8 @@ class TestDeliveryAddress(object):
          
         street_error="//*[@id='Street-error']"
         assert (Keywords.getText(driver, street_error)==error),"Street Error is not the same as expected: %s for %s" % (error,add)
-         
+    
+    #Verify if the user is able to enter address details for delivery     
     def test_delivery_address_ui_component(self,driver):
         navigate_to_dominos(driver)
         delivery_button="//*[contains(@class,'js-delivery')]"

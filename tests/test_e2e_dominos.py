@@ -42,6 +42,8 @@ def fill_form(driver):
 
 @pytest.mark.usefixtures('driver')
 class TestPayment(object):
+    
+    #Verify if the user is able to place an e2e order for delivery
     def test_e2e_delivery_dominos(self,driver):
         navigate_to_payment(driver)
         
@@ -56,6 +58,7 @@ class TestPayment(object):
         #placeOrder="//*[contains(@class,'submitButton')]"
         #Keywords.ClickElement(driver,placeOrder)
         
+    #Verify if the user is able to place an e2e order for pickup
     def test_e2e_carryout_dominos(self,driver):
         navigate_to_select_pizza(driver)
         specialityPizza="//*[contains(@class,'order-entrees-specialtypizza')]/h2"
