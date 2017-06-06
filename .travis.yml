@@ -12,6 +12,8 @@ env:
  -TESTFILE=tests/test_delivery_pizza_select.py
  -TESTFILE=tests/test_e2e_dominos.py
  -TESTFILE=tests/test_unit_delivery_home.py
+
+env:
   global:
   - SAUCE_USERNAME=anveshmalhotra
   - SAUCE_ACCESS_KEY=6d27c807-1c2b-41e4-9411-73944a17211e
