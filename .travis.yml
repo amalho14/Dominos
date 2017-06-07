@@ -19,3 +19,5 @@ notifications:
       - mhist@usatoday.com
       - ebursch@gannett.com
       - klucas@gannett.com
+    on_success: always 
+    on_failure: always 
